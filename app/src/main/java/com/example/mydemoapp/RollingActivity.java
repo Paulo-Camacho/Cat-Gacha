@@ -1,5 +1,7 @@
 package com.example.mydemoapp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -24,6 +26,15 @@ public class RollingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityRollingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        binding.backButtonRoll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UserActivity.userActivityFactory(getApplicationContext());
+            }
+        });
+    }
+    static Intent rollingActivityFactory(Context context){
+        Intent intent = new Intent(context, RollingActivity.class);
+        return intent;
     }
 }

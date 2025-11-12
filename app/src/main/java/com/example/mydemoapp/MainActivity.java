@@ -1,6 +1,9 @@
 package com.example.mydemoapp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,5 +20,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.loginButtonMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserActivity.userActivityFactory(getApplicationContext());
+            }
+        });
+    }
+    static Intent mainActivityFactory(Context context){
+        Intent intent = new Intent(context, MainActivity.class);
+        return intent;
     }
 }

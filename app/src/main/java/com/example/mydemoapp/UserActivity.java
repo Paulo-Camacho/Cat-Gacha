@@ -1,6 +1,9 @@
 package com.example.mydemoapp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,5 +23,15 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityUserLandingPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.rollMainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RollingActivity.rollingActivityFactory(getApplicationContext());
+            }
+            });
+    }
+    static Intent userActivityFactory(Context context){
+        Intent intent = new Intent(context, UserActivity.class);
+        return intent;
     }
 }
