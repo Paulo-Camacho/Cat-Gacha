@@ -40,10 +40,24 @@
         app:layout_constraintTop_toBottomOf="@+id/rollMainButton" />
 
     <Button
+        android:id="@+id/adminToolsButton"
+        android:layout_width="250dp"
+        android:layout_height="75dp"
+        android:text="@string/admin_tools"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/premuimMainButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/collectionMainButton"
+        app:layout_constraintVertical_bias="0.764" />
+
+    <Button
         android:id="@+id/premuimMainButton"
         android:layout_width="250dp"
         android:layout_height="75dp"
-        android:layout_marginTop="428dp"
+        android:layout_marginTop="504dp"
         android:text="@string/premium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -60,6 +74,6 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/premuimMainButton"
-        app:layout_constraintVertical_bias="0.457" />
+        app:layout_constraintVertical_bias="0.319" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
