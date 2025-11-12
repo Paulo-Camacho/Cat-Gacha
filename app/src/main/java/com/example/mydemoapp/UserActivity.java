@@ -27,8 +27,14 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(RollingActivity.rollingActivityFactory(getApplicationContext()));
-            }
+                }
             });
+        binding.logoutMainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(MainActivity.mainActivityFactory(getApplicationContext()));
+            }
+        });
     }
     static Intent userActivityFactory(Context context){
         Intent intent = new Intent(context, UserActivity.class);
