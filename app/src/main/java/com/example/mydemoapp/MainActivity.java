@@ -48,6 +48,16 @@ public class MainActivity extends AppCompatActivity {
                     Log.wtf(TAG, "Error reading users", e);
                 }
             }
-        }).start();
+        });
+        binding.loginAdminButtonMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(UserActivity.userActivityFactory(getApplicationContext()));
+            }
+        });
+    }
+    static Intent mainActivityFactory(Context context){
+        Intent intent = new Intent(context, MainActivity.class);
+        return intent;
     }
 }
