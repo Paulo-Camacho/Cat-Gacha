@@ -18,6 +18,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "GACHA_TEST";
+    private static final int LOGGED_OUT = -1;
+    private int loggedInUserID = LOGGED_OUT;
 
     public static Intent mainActivityFactory(Context context) {
             Intent intent = new Intent(context, MainActivity.class);
@@ -48,12 +50,18 @@ public class MainActivity extends AppCompatActivity {
                     for (User u : users) {
                         Log.i(TAG,
                                 "User: " + u.getUsername() +
-                                        " | Admin? " + u.isAdmin());
+                                        " | Admin? " + u.getIsAdmin());
                     }
                 } catch (Exception e) {
                     Log.wtf(TAG, "Error reading users", e);
                 }
             }
         }).start();
+
+
+        if(loggedInUserID != LOGGED_OUT){
+            Intent intent = UserActivity.userActivityFactory(getApplicationContext());
+            startActivity(intent);
+        }
     }
 }

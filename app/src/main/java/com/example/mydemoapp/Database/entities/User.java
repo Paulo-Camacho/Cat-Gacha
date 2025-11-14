@@ -16,12 +16,13 @@ public class User {
     private String username;
     private String password;
     private boolean isAdmin;
-    private boolean isPremuim;
+    private boolean isPremium;
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
         this.isAdmin = false;
+        this.isPremium = false;
     }
 
     // GETTERS + SETTERS
@@ -34,10 +35,10 @@ public class User {
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
 
-    public boolean isAdmin() { return isAdmin; }
+    public boolean getIsAdmin() { return isAdmin; }
     public void setAdmin(boolean admin) { isAdmin = admin; }
-    public boolean isPremuim() { return isAdmin; }
-    public void setPremuim(boolean premuim) { isPremuim = premuim; }
+    public boolean getIsPremium() { return isPremium; }
+    public void setPremium(boolean premium) { isPremium = premium; }
 
     @Override
     public boolean equals(Object o) {

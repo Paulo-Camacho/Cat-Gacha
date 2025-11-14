@@ -18,7 +18,7 @@ import com.example.mydemoapp.MainActivity;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {GachaItem.class, User.class}, version = 1, exportSchema = false)
+@Database(entities = {GachaItem.class, User.class}, version = 2, exportSchema = false)
 //@TypeConverters({LocalDateConverter.class})
 public abstract class GachaDatabase extends RoomDatabase {
 
