@@ -77,4 +77,8 @@ public class GachaRepository {
     public LiveData<User> getUserByUserID(int loggedInUserID) {
         return userDAO.getUserByUserId(loggedInUserID);
     }
+
+    public LiveData<User> getUserByUsername(String username) {
+        return userDAO.getUserByUsername(username);
+    }
 }
