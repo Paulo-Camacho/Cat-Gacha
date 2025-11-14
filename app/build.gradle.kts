@@ -46,15 +46,12 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-<<<<<<< HEAD
     val room_version = "2.8.3"
     annotationProcessor("androidx.room:room-compiler:$room_version")
-=======
 
     implementation("androidx.room:room-runtime:2.6.1")
     annotationProcessor("androidx.room:room-compiler:2.6.1")
 
     implementation("androidx.room:room-ktx:2.6.1")
 
->>>>>>> database-paulo
 }
