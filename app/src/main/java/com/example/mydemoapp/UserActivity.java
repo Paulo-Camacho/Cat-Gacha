@@ -29,6 +29,8 @@ public class UserActivity extends AppCompatActivity {
     private ActivityUserLandingPageBinding binding;
     private User user;
     private GachaRepository repo;
+    private boolean admin = false;
+    private boolean premium = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +48,16 @@ public class UserActivity extends AppCompatActivity {
                 binding.userNameTextView.setText("Welcome "+user.getUsername());
                 if(user.getIsAdmin()){
                   binding.adminToolsButton.setVisibility(View.VISIBLE);
+                  admin = true;
+                  if(user.getIsPremium()){
+                      toastMaker("you cannot be premium as a admin");
+                      user.setPremium(false);
+
+                  }
                  }else{
+                    if(user.getIsPremium()){
+                        premium = true;
+                    }
                   binding.adminToolsButton.setVisibility(View.INVISIBLE);
                  }
             }else{
@@ -71,13 +82,27 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 logout();
-                startActivity(ViewCollectionActivity.viewCollectionIntentFactory(getApplicationContext()));
+                startActivity(ViewCollectionActivity.viewCollectionIntentFactory(getApplicationContext(), user.getId()));
             }
         });
         binding.premuimMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(PremiumUserLandingPageActivity.premiumUserIntentFactory(getApplicationContext()));
+                if(admin){
+                    if(user.getIsPremium()){
+                        toastMaker("you cannot be premium as a admin");
+                        user.setPremium(false);
+                        return;
+                    }else{
+                        toastMaker("you cannot be premium as a admin");
+                        return;
+                    }
+                }
+                if(!premium){
+                    toastMaker("you are now a premuim user");
+                    user.setPremium(true);
+                }
+                startActivity(PremiumUserLandingPageActivity.premiumUserIntentFactory(getApplicationContext(), user.getId()));
             }
         });
         binding.adminToolsButton.setOnClickListener(new View.OnClickListener() {
@@ -106,5 +131,8 @@ public class UserActivity extends AppCompatActivity {
         SharedPreferences.Editor sharedPref = sharedPreferences.edit();
         sharedPref.putInt(getString(R.string.preference_userId_key),loggedInUserID);
         sharedPref.apply();
+    }
+    private void toastMaker(String message){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

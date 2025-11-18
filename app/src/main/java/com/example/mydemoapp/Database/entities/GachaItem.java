@@ -14,13 +14,15 @@ public class GachaItem {
     private int id;
 
     private String itemName;
+    private String url;
     private String rarity;
     //TODO: Implement date pulled differently
     private String datePulled;
 
-    public GachaItem(String itemName, String rarity) {
+    public GachaItem(String itemName, String rarity, String url) {
         this.itemName = itemName;
         this.rarity = rarity;
+        this.url = url;
         // Date pulled is an empty string right now
         this.datePulled = "";
     }
@@ -31,6 +33,7 @@ public class GachaItem {
                 "id=" + id +
                 ", itemName='" + itemName + '\'' +
                 ", rarity='" + rarity + '\'' +
+                ", url="+ url + '\'' +
                 ", datePulled='" + datePulled + '\'' +
                 '}';
     }
@@ -43,12 +46,13 @@ public class GachaItem {
         return id == that.id &&
                 Objects.equals(itemName, that.itemName) &&
                 Objects.equals(rarity, that.rarity) &&
+                Objects.equals(url,that.url) &&
                 Objects.equals(datePulled, that.datePulled);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, itemName, rarity, datePulled);
+        return Objects.hash(id, itemName, rarity, url, datePulled);
     }
 
     public int getId() { return id; }
@@ -59,6 +63,14 @@ public class GachaItem {
 
     public String getRarity() { return rarity; }
     public void setRarity(String rarity) { this.rarity = rarity; }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public String getDatePulled() { return datePulled; }
     public void setDatePulled(String datePulled) { this.datePulled = datePulled; }
