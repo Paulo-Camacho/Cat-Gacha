@@ -1,16 +1,11 @@
 package com.example.mydemoapp;
 
-import android.content.ContentProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.LiveData;
 
 import com.example.mydemoapp.Database.GachaRepository;
@@ -32,6 +27,7 @@ public class ViewCollectionActivity extends AppCompatActivity {
     private GachaRepository repo;
 
     private User user;
+    private boolean isPremium = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,20 +47,28 @@ public class ViewCollectionActivity extends AppCompatActivity {
                 //set the text to be the username
                 String placeholder = user.getUsername() + "'s Collection";
                 binding.collectionTitleTextView.setText(placeholder);
+                isPremium = user.getIsPremium();
             }else{
                 String placeholder = "This user is nonexistent and therefore has no collection.";
                 binding.collectionTitleTextView.setText(placeholder);
             }
         });
 
-        //TODO: make this send user back to correct landing page
         binding.collectionBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = PremiumUserLandingPageActivity.premiumUserIntentFactory(getApplicationContext(),loggedInUserID);
-                startActivity(intent);
+                if(isPremium){
+                    Intent intent = PremiumUserLandingPageActivity.premiumUserIntentFactory(getApplicationContext(),loggedInUserID);
+                    startActivity(intent);
+                }
+                else{
+                    Intent intent = UserActivity.userActivityFactory(getApplicationContext(),loggedInUserID);
+                    startActivity(intent);
+                }
+
             }
         });
+
 
 
     }

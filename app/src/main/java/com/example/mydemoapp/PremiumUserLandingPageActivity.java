@@ -54,6 +54,14 @@ public class PremiumUserLandingPageActivity extends AppCompatActivity {
         });
 
 
+        binding.premiumUserRollButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = RollingActivity.rollingActivityFactory(getApplicationContext());
+                startActivity(intent);
+            }
+        });
+
         binding.premiumUserLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +79,7 @@ public class PremiumUserLandingPageActivity extends AppCompatActivity {
             }
         });
 
+        //allow them to go back to the normal landing page
         binding.noMorePremiumSadEyesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,6 +90,15 @@ public class PremiumUserLandingPageActivity extends AppCompatActivity {
                 }
                 Intent intent = UserActivity.userActivityFactory(getApplicationContext(),loggedInUserID);
                 startActivity(intent);
+            }
+        });
+
+        //why would they ever cancel their premium though
+        binding.noMorePremiumSadEyesButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                toastMaker("Wait no. Come back.");
+                return false;
             }
         });
 
