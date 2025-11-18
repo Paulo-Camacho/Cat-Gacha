@@ -18,6 +18,7 @@ public class GachaRepository {
 
     private final GachaItemDAO gachaDAO;
     private final UserDAO userDAO;
+    private final UserItemDAO userItemDAO;
 
     private static GachaRepository repository;
 
@@ -25,6 +26,7 @@ public class GachaRepository {
         GachaDatabase db = GachaDatabase.getDatabase(application);
         gachaDAO = db.gachaItemDAO();
         userDAO = db.userDAO();
+        userItemDAO = db.userItemDAO();
     }
 
 

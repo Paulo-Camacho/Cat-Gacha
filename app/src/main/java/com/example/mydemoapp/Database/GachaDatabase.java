@@ -13,17 +13,19 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 //import com.example.mydemoapp.Database.converters.LocalDateConverter;
 import com.example.mydemoapp.Database.entities.GachaItem;
 import com.example.mydemoapp.Database.entities.User;
+import com.example.mydemoapp.Database.entities.UserToItem;
 import com.example.mydemoapp.MainActivity;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {GachaItem.class, User.class}, version = 4, exportSchema = false)
+@Database(entities = {GachaItem.class, User.class, UserToItem.class}, version = 6, exportSchema = false)
 //@TypeConverters({LocalDateConverter.class})
 public abstract class GachaDatabase extends RoomDatabase {
 
     public static final String GACHA_TABLE = "gacha_table";
     public static final String USER_TABLE = "user_table";
+    public static final String USER_ITEM_TABLE = "user_item_table";
 
     private static final String DATABASE_NAME = "Gacha_Database";
 
@@ -34,6 +36,7 @@ public abstract class GachaDatabase extends RoomDatabase {
 
     public abstract GachaItemDAO gachaItemDAO();
     public abstract UserDAO userDAO();
+    public abstract UserItemDAO userItemDAO();
 
     public static GachaDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {

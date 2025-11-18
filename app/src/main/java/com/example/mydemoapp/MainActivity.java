@@ -64,7 +64,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }).start();
-
+        User testuser1 = new User("testuser1","testuser1");
+        User admin2 = new User("admin2","admin2");
+        admin2.setAdmin(true);
+        User premuim = new User("premium","premuim");
+        premuim.setPremium(true);
+        repo.insertUser(testuser1);
+        repo.insertUser(admin2);
+        repo.insertUser(premuim);
         loginUser(savedInstanceState);
 
         if(loggedInUserID != LOGGED_OUT){
