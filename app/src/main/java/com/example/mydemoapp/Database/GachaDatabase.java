@@ -16,7 +16,7 @@ import com.example.mydemoapp.Database.entities.UserToItem;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {GachaItem.class, User.class, UserToItem.class}, version = 7, exportSchema = false)
+@Database(entities = {GachaItem.class, User.class, UserToItem.class}, version = 8, exportSchema = false)
 //@TypeConverters({LocalDateConverter.class})
 public abstract class GachaDatabase extends RoomDatabase {
 
@@ -69,6 +69,10 @@ public abstract class GachaDatabase extends RoomDatabase {
                 User test = new User("testuser1", "testuser1");
                 test.setAdmin(false);
                 dao.insert(test);
+
+                User premium = new User("premium3", "premium3");
+                premium.setPremium(true);
+                dao.insert(premium);
             });
         }
     };

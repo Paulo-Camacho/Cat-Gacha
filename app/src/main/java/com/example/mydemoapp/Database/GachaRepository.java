@@ -10,6 +10,7 @@ import com.example.mydemoapp.Database.entities.User;
 import com.example.mydemoapp.MainActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -82,5 +83,9 @@ public class GachaRepository {
 
     public LiveData<User> getUserByUsername(String username) {
         return userDAO.getUserByUsername(username);
+    }
+
+    public LiveData<List<GachaItem>> getAllPullsLiveData() {
+        return userItemDAO.getAllPullsLiveData();
     }
 }
