@@ -9,6 +9,7 @@
         android:layout_width="69dp"
         android:layout_height="66dp"
         android:id="@+id/gachaItemImageView"
+        android:contentDescription="Gacha Item"
         app:srcCompat="@android:drawable/btn_star_big_on"/>
 
 </LinearLayout>

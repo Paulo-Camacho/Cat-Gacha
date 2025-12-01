@@ -22,7 +22,7 @@ public class GachaItemViewHolder extends RecyclerView.ViewHolder {
         gachaViewItem = gachaView.findViewById(R.id.gachaItemImageView);
     }
 
-    public void bind(String text){
+    public void bind(String url){
         //TODO: figure out how to make the image show up with the url
     }
 

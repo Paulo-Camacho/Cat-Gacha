@@ -101,7 +101,6 @@ public class PremiumUserLandingPageActivity extends AppCompatActivity {
                 return false;
             }
         });
-
     }
 
     static Intent premiumUserIntentFactory(Context context, int userID){
