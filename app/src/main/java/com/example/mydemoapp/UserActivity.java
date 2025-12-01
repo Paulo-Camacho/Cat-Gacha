@@ -61,7 +61,7 @@ public class UserActivity extends AppCompatActivity {
                   binding.adminToolsButton.setVisibility(View.INVISIBLE);
                  }
             }else{
-                user = new User("null","null");
+                user = new User("nullUser","null");
                 binding.userNameTextView.setText("Welcome "+user.getUsername());
             }
         });
@@ -69,7 +69,7 @@ public class UserActivity extends AppCompatActivity {
         binding.rollMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(RollingActivity.rollingActivityFactory(getApplicationContext()));
+                startActivity(RollingActivity.rollingActivityFactory(getApplicationContext(), user.getUserID()));
                 }
             });
         binding.logoutMainButton.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +82,7 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 logout();
-                startActivity(ViewCollectionActivity.viewCollectionIntentFactory(getApplicationContext(), user.getId()));
+                startActivity(ViewCollectionActivity.viewCollectionIntentFactory(getApplicationContext(), user.getUserID()));
             }
         });
         binding.premuimMainButton.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +102,7 @@ public class UserActivity extends AppCompatActivity {
                     toastMaker("you are now a premuim user");
                     user.setPremium(true);
                 }
-                startActivity(PremiumUserLandingPageActivity.premiumUserIntentFactory(getApplicationContext(), user.getId()));
+                startActivity(PremiumUserLandingPageActivity.premiumUserIntentFactory(getApplicationContext(), user.getUserID()));
             }
         });
         binding.adminToolsButton.setOnClickListener(new View.OnClickListener() {
