@@ -10,7 +10,6 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 
-import com.example.mydemoapp.Database.GachaDatabase;
 import com.example.mydemoapp.Database.GachaRepository;
 import com.example.mydemoapp.Database.entities.User;
 import com.example.mydemoapp.databinding.ActivityMainBinding;
@@ -67,11 +66,11 @@ public class MainActivity extends AppCompatActivity {
         User testuser1 = new User("testuser1","testuser1");
         User admin2 = new User("admin2","admin2");
         admin2.setAdmin(true);
-        User premuim = new User("premium","premuim");
-        premuim.setPremium(true);
+        User premium = new User("premium","premium");
+        premium.setPremium(true);
         repo.insertUser(testuser1);
         repo.insertUser(admin2);
-        repo.insertUser(premuim);
+        repo.insertUser(premium);
         loginUser(savedInstanceState);
 
         if(loggedInUserID != LOGGED_OUT){
