@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import com.example.mydemoapp.Database.GachaRepository;
 import com.example.mydemoapp.Database.entities.GachaItem;
 import com.example.mydemoapp.Database.entities.User;
 import com.example.mydemoapp.databinding.ActivityRollingBinding;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -65,12 +67,15 @@ public class RollingActivity extends AppCompatActivity {
         binding.rollButtonRoll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ImageView imageView = findViewById(R.id.outputRollImageView);
+                Picasso.get().load("https://en.wikipedia.org/wiki/Throbber#/media/File:Ajax_loader_metal_512.gif").into(imageView);
                 pulls = repo.getAllPulls();
                 int random = (int) (Math.random()*pulls.size()+1);
                 if(pulls.get(random).getRarity().equals("rare")){
                     random = (int) (Math.random()*pulls.size()+1);
                 }
                 String url = pulls.get(random).getUrl();
+                Picasso.get().load(url).into(imageView);
             }
         });
     }
