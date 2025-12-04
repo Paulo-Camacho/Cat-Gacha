@@ -19,6 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.231" />
 
+
     <Button
         android:id="@+id/rollButtonRoll"
         android:layout_marginTop="180dp"
@@ -40,4 +41,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rollButtonRoll"
         app:layout_constraintVertical_bias="0.507" />
+
+    <ImageView
+        android:id="@+id/outputRollImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/rollButtonRoll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/outputRollTextView"
+        app:layout_constraintVertical_bias="0.567"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
 </androidx.constraintlayout.widget.ConstraintLayout>
