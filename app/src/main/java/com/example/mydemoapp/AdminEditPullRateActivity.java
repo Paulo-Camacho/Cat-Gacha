@@ -7,10 +7,16 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mydemoapp.Database.GachaRepository;
+import com.example.mydemoapp.Database.entities.GachaItem;
 import com.example.mydemoapp.databinding.ActivityAdminEditPullRateBinding;
+
+import java.util.List;
 
 public class AdminEditPullRateActivity extends AppCompatActivity {
 
+    private GachaRepository repo;
+    private List<GachaItem> pulls;
     private ActivityAdminEditPullRateBinding binding;
 
 
@@ -31,7 +37,14 @@ public class AdminEditPullRateActivity extends AppCompatActivity {
         binding.AdminPullRateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(AdminLandingPageActivity.AdminLandingPageActivityIntentFactory(getApplicationContext()));
+                pulls = repo.getAllPulls();
+                for (int i = 0; i < pulls.size(); i++){
+                    if (pulls.get(i).getRarity().equals("rare")){
+                        pulls.get(i).setRarity("common");
+                    } else {
+                        pulls.get(i).setRarity("rare");
+                    }
+                }
             }
         });
 
