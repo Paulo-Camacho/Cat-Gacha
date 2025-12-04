@@ -90,10 +90,6 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = PremiumUserLandingPageActivity.premiumUserIntentFactory(getApplicationContext(), loggedInUserID);
                     startActivity(intent);
                 }
-                else if (user.getIsAdmin()) {
-                    Intent intent = AdminLandingPageActivity.AdminLandingPageActivityIntentFactory(getApplicationContext());
-                    startActivity(intent);
-                }
                 else{
                     Intent intent = UserActivity.userActivityFactory(getApplicationContext(), loggedInUserID);
                     startActivity(intent);
