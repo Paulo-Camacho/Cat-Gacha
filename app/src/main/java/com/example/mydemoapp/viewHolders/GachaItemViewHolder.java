@@ -24,7 +24,6 @@ public class GachaItemViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(String url){
-        //TODO: figure out how to make the image show up with the url
         Picasso.get().load(url).into(gachaViewItem);
     }
 
