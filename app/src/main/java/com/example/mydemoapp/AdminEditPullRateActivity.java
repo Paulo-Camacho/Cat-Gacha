@@ -44,15 +44,11 @@ public class AdminEditPullRateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 pulls = repo.getAllPulls();
-                // ID = repo.getId
-                //      repo.setRarityById(String ID)
                 for (int i = 0; i < pulls.size(); i++){
                     if (pulls.get(i).getRarity().equals("rare")){
                         repo.setRarityById( i, "common");
-                        //pulls.get(i).setRarity("common"); //remove this
                     } else {
                         repo.setRarityById( i, "rare");
-                        //pulls.get(i).setRarity("rare");
                     }
                 }
             }
